@@ -7,7 +7,6 @@ import seaborn as sns
 DEFAULT_CSV_PATH = "sales_data.csv"
 
 def ensure_sample_dataset_exists(file_path=DEFAULT_CSV_PATH):
-    """Creates a sample sales CSV file automatically if it doesn't already exist."""
     if not os.path.exists(file_path):
         sample_data = {
             'SalesID': [101, 102, 103, 104, 105],
@@ -22,7 +21,6 @@ def ensure_sample_dataset_exists(file_path=DEFAULT_CSV_PATH):
 
 
 class SalesDataAnalyzer:
-    """Class encapsulating all functionalities for sales data analysis and visualization."""
 
     def __init__(self, file_path=None):
         self.data = None
@@ -34,7 +32,6 @@ class SalesDataAnalyzer:
         plt.close("all")
 
     def load_data(self, file_path):
-        """Load data from a CSV file."""
         if not os.path.exists(file_path):
             print(f"Error: File '{file_path}' not found.")
             return False
@@ -47,7 +44,6 @@ class SalesDataAnalyzer:
             return False
 
     def explore_data(self, option):
-        """Display basic information about the dataset."""
         if self.data is None:
             print("No dataset loaded. Please load a dataset first.")
             return
@@ -71,7 +67,6 @@ class SalesDataAnalyzer:
             print("Invalid option.")
 
     def search_sort_filter(self):
-        """Implement search, sort, and filter functionalities."""
         if self.data is None:
             print("No dataset loaded.")
             return
@@ -111,7 +106,6 @@ class SalesDataAnalyzer:
                 print("Invalid numeric column.")
 
     def create_pivot_table(self, index_col, values_col, agg_func='sum'):
-        """Generate pivot tables for data summarization."""
         if self.data is None:
             print("No dataset loaded.")
             return
@@ -124,7 +118,6 @@ class SalesDataAnalyzer:
             print(f"Error creating pivot table: {e}")
 
     def clean_data(self, option):
-        """Handle missing values and perform data cleaning."""
         if self.data is None:
             print("No dataset loaded.")
             return
@@ -150,7 +143,6 @@ class SalesDataAnalyzer:
             print(f"Missing values replaced with '{val}'.")
 
     def statistical_analysis(self):
-        """Perform statistical computations."""
         if self.data is None:
             print("No dataset loaded.")
             return
@@ -163,7 +155,6 @@ class SalesDataAnalyzer:
             print("\n25th & 75th Percentiles:\n", num_cols.quantile([0.25, 0.75]))
 
     def visualize_data(self, plot_type):
-        """Create various plots using Matplotlib and Seaborn."""
         if self.data is None:
             print("No dataset loaded.")
             return
@@ -228,7 +219,6 @@ class SalesDataAnalyzer:
             plt.close(fig)
 
     def save_visualization(self, filename):
-        """Save visualizations as image files."""
         if self.last_fig is None:
             print("No active plot available to save. Generate a plot first.")
             return
